@@ -19,6 +19,10 @@ class Mahasiswa extends CI_Model {
 				$kode_pt = explode('-', $params['pt']);
 				$sql .= "KODE_PERGURUAN_TINGGI = '".$kode_pt[0]."' AND ";
 			}
+			if($params['ps'] != "") {
+				$kode_ps = explode('-', $params['ps']);
+				$sql .= "KODE_PROGRAM_STUDI = '".$kode_ps[0]."' AND ";
+			}
 			$sql .=	"TAHUN_MASUK BETWEEN ".$params['start']." AND ".$params['end']." ";
 		}
 		$sql .= "GROUP BY TAHUN_MASUK 
@@ -41,7 +45,11 @@ class Mahasiswa extends CI_Model {
 			$sql .= "WHERE ";
 			if($params['pt'] != "") {
 				$kode_pt = explode('-', $params['pt']);
-				$sql .= "KODE_PERGURUAN_TINGGI = '".$kode_pt[0]."' AND ";
+				$sql .= "KODE_PERGURUAN_TINGGI = ".$this->db->escape($kode_pt[0])." AND ";
+			}
+			if($params['ps'] != "") {
+				$kode_ps = explode('-', $params['ps']);
+				$sql .= "KODE_PROGRAM_STUDI = ".$this->db->escape($kode_ps[0])." AND ";
 			}
 			$sql .=	"TAHUN_MASUK BETWEEN ".$params['start']." AND ".$params['end']." ";
 		}
@@ -66,6 +74,10 @@ class Mahasiswa extends CI_Model {
 			if($params['pt'] != "") {
 				$kode_pt = explode('-', $params['pt']);
 				$sql .= "KODE_PERGURUAN_TINGGI = '".$kode_pt[0]."' AND ";
+			}
+			if($params['ps'] != "") {
+				$kode_ps = explode('-', $params['ps']);
+				$sql .= "KODE_PROGRAM_STUDI = '".$kode_ps[0]."' AND ";
 			}
 			$sql .=	"TAHUN_MASUK BETWEEN ".$params['start']." AND ".$params['end']." ";
 		}

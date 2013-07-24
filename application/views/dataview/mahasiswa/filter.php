@@ -17,12 +17,33 @@ $("input[name=filter_pt]").autocomplete({
   	},
 	cache: false
 });
+$("input[name=filter_ps]").autocomplete({
+	minLength: 3,
+	source: function(request, response) {
+		$.get("<?=base_url()?>index.php/dataview/ps/daftar_json", 
+			{
+				term:request.term, 
+				pt:$("input[name=filter_pt]").val()
+			}, 
+			function(data){     
+        	response($.map(data, function(item) {
+        		return {
+					label: item.LABEL,
+					id: item.ID,
+					value: item.ID + "-" + item.LABEL
+        		}
+        	}))
+    	}, "json");
+	},
+	cache: false
+});
 
 function doFilter(url) {
 	$.get("<?=base_url() ?>index.php/" + url, 
 		{
 			filter: "true",
 			pt: $("input[name=filter_pt]").val(),
+			ps: $("input[name=filter_ps]").val(),
 			start: $("input[name=filter_start]").val(),
 			end: $("input[name=filter_end]").val()
 		}
@@ -30,13 +51,23 @@ function doFilter(url) {
 		$("dataview").html(resp);
 	});
 }
+
+function clearField(elem) {
+	$("input[name=filter_" + elem + "]").val("");
+	$("input[name=filter_" + elem + "]").focus();
+}
 </script>
 <div class="filter">
-  <span class="filter-title">Filterisasi Data</span>
+  <span class="filter-title">Filter Data</span>
   <form action="javascript:void(0);" name="filter" method="get">
-    <table border="0" style="margin-bottom:10px;">
+    <table border="0" style="margin-bottom:10px; margin-top:-10px;">
       <tr>
-        <td width="150">Per Perguruan Tinggi</td><td><input type="text" name="filter_pt" size="50" <?php if(isset($params['filter_pt'])) echo 'value="'.$params['filter_pt'].'"' ?>/></td>
+        <td width="150">Per Perguruan Tinggi</td>
+        <td><input type="text" name="filter_pt" size="50" <?php if(isset($params['filter_pt'])) echo 'value="'.$params['filter_pt'].'"' ?>/><a onclick="clearField('pt')"><img src="<?=base_url() ?>resource/images/cancel.png" class="clearfield" /></a></td>
+      </tr>
+      <tr>
+        <td>Per Program Studi</td>
+        <td><input type="text" name="filter_ps" size="50" <?php if(isset($params['filter_ps'])) echo 'value="'.$params['filter_ps'].'"' ?>/><a onclick="clearField('ps')"><img src="<?=base_url() ?>resource/images/cancel.png" class="clearfield" /></a></td>
       </tr>
       <tr class="filter-date">
         <td><span style="position:relative; top:3px;">Per Jangka Waktu</span></td>

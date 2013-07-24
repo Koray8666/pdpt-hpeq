@@ -1,4 +1,10 @@
-/* CSS Document */
+/*
+CSS Document
+Author: Endy Hardy
+Date Created: 16 July 2013
+
+Region-based Formatting
+*/
 
 /* CSS Reset */
 html, body, div, span, applet, object, iframe,
@@ -46,6 +52,7 @@ table {
 }
 /* End CSS Reset */
 
+/* General Formatting */
 html {
 	height: 100%;
 }
@@ -61,6 +68,12 @@ a {
 	color: inherit;
 	text-decoration: none;
 	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: moz-none;
+	-ms-user-select: none;
+	user-select: none;
 }
 strong {
 	font-family: "Segoe UI", Arial, Tahoma, sans-serif;
@@ -81,7 +94,16 @@ h2 {
 .clear {
 	clear: both;
 }
+.clearfield {
+	position:relative; 
+	top:5px; 
+	left:-25px;
+	width: 20px;
+	height: 20px;
+	background: #FFF;
+}
 
+/* Main Wrapper Formatting */
 #wrap {
 	width: 100%;
 	height: 100%;
@@ -95,6 +117,7 @@ h2 {
 	z-index: 99;
 }
 
+/* Sidebar Formatting */
 #sidebar {
 	width: 240px;
 	position: fixed;
@@ -132,6 +155,7 @@ h2 {
 	background: #fff;
 }
 
+/* Content Area Formatting */
 #content {
 	position: absolute;
 	left: 250px;
@@ -139,7 +163,7 @@ h2 {
 	padding: 58px 10px 30px 10px;
 }
 .filter {
-	margin: 30px 0 20px 0;
+	margin: 30px 0 15px 0;
 	padding: 10px 20px 20px 20px;
 	border: #eee thin solid;
 }
@@ -168,7 +192,7 @@ input {
 	padding: 2px 5px;
 }
 
-/* Header Styling */
+/* Header Formatting */
 header {
 	position: fixed;
 	top: 0;
@@ -183,7 +207,7 @@ header {
 	font-size: 24px;
 }
 
-/* Footer Styling */
+/* Footer Formatting */
 footer {
 	position: fixed;
 	bottom: 0;

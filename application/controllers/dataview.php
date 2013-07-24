@@ -36,6 +36,7 @@ class Dataview extends CI_Controller {
 				$data['prc'] = $this->Mahasiswa->degree_by_year("percent");
 				$this->load->view('dataview/mahasiswa/degreebyyear', $data);
 				break;
+			default: $this->load->view('not_avail'); break;
 		}
 	}
 	
@@ -49,8 +50,25 @@ class Dataview extends CI_Controller {
 		}
 	}
 	
+	public function ps($view) {
+		$this->load->model('Prog_Studi');
+		switch($view) {
+			case "daftar_json":
+				$params = array("term" => $this->input->get('term'), "pt" => $this->input->get('pt'));
+				$data['res'] = $this->Prog_Studi->data_list($params);
+				echo json_encode($data['res']);
+		}
+	}
+	
 	public function sarana($view) {
-		$this->load->view('not_avail');
+		$data['params'] = $this->input->get(NULL, TRUE);
+		$this->load->model('Srn_Klinis');
+		switch($view) {
+			case "typeshos":
+				$data['res'] = $this->Srn_Klinis->types_hos();
+				$this->load->view('dataview/sarana/typeshos', $data); break;
+			default: $this->load->view('not_avail'); break;
+		}
 	}
 	
 }
