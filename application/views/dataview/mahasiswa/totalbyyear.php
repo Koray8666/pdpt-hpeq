@@ -2,7 +2,7 @@
 <a onclick="initField('graph')"><div class="pretitle">
   Grafik<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
 </div></a>
-<div id="graph" class="accord" style="display:block">
+<div id="graph" class="accord">
 <canvas id="chart" width="780" height="390"></canvas>
 <script>
 var chartData = {
@@ -30,15 +30,48 @@ var myLine = new Chart(document.getElementById("chart").getContext("2d")).Line(c
 <a onclick="initField('dataview')"><div class="pretitle">
   Ringkasan Data<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
 </div></a>
-<div id="dataview" class="accord">
-<table border="0">
-  <tr><th>Tahun Masuk</th><th>Jumlah Mhs</th></tr>
-  <?php foreach($res as $res_item): ?>
-  <tr>
-    <td><?=$res_item['TAHUN_MASUK'] ?></td>
-    <td><?=$res_item['JML_MAHASISWA'] ?></td>
-  </tr>
-  <?php endforeach ?>
-</table>
+<div id="dataview" class="accord" style="display:block">
+<?php
+	$hpeak = 0;
+	$lpeak = 0;
+	$index = 0;
+	$sum = 0;
+	foreach($res as $res_item) {
+		if($res_item['JML_MAHASISWA'] > $hpeak) {
+			$hpeak_y = $res_item['TAHUN_MASUK'];
+			$hpeak = $res_item['JML_MAHASISWA'];
+		}
+		if($res_item['JML_MAHASISWA'] < $lpeak || $lpeak == 0) {
+			$lpeak = $res_item['JML_MAHASISWA'];
+			$lpeak_y = $res_item['TAHUN_MASUK'];
+		}
+		$sum = $sum + $res_item['JML_MAHASISWA'];
+		$index++;
+	}
+	if($index > 0) {
+		$average = $sum / ($index + 1);
+		$average = explode(".", $average);
+	}
+?>
+  <div class="summary">
+    <p>Mahasiswa Masuk PT Tahun <?=$res_item['TAHUN_MASUK'] ?></p>
+    <span style="font-size:48px"><?=$res_item['JML_MAHASISWA'] ?></span>
+  </div>
+  <div class="summary">
+    <p>Jumlah Penerimaan <strong>Tertinggi</strong> pada Tahun</p>
+    <span style="font-size:48px"><?=$hpeak_y ?></span><br />
+    <p><?=$hpeak ?> Mahasiswa</p>
+  </div>
+  <div class="summary">
+    <p>Jumlah Penerimaan <strong>Terendah</strong> pada Tahun</p>
+    <span style="font-size:48px"><?=$lpeak_y ?></span><br />
+    <p><?=$lpeak ?> Mahasiswa</p>
+  </div>
+  <div class="summary">
+    <p>Rata-rata Penerimaan Mahasiswa per Tahun</p>
+    <span style="font-size:48px"><?=$average[0] ?></span>
+  </div>
+  <div class="clear" style="margin-bottom:20px;"></div>
+  <a href="#">Lihat Detail Data</a>
 </div>
 <?php if(!isset($params['filter'])) { ?></dataview><?php } ?>

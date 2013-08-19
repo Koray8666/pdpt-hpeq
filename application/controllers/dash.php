@@ -2,9 +2,9 @@
 
 class Dash extends CI_Controller {
 
-	public function index()
-	{
+	public function index() {
 		$this->load->view('dash');
+		$this->load->view('dataview/sidebar');
 		$this->load->view('no_selection');
 		$this->load->view('footer');
 	}
@@ -18,6 +18,3 @@ class Dash extends CI_Controller {
 	}
 	
 }
-
-/* End of file dash.php */
-/* Location: ./application/controllers/dash.php */

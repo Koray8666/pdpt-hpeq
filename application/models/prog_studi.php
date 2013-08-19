@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Prog_Studi extends CI_Model {
 	

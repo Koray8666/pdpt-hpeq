@@ -61,8 +61,6 @@ class Dataview extends CI_Controller {
 	}
 	
 	public function sarana($view) {
-		$data['params'] = $this->input->get(NULL, TRUE);
-		$this->load->model('Srn_Klinis');
 		switch($view) {
 			default: $this->load->view('not_avail'); break;
 		}
