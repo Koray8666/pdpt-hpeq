@@ -1,6 +1,8 @@
-<?php if(!isset($params['filter'])) { ?><dataview> <?php } ?>
-<div style="min-width:940px">
-<div style="width:790px; float:left;">
+<?php if(!isset($params['filter'])) { ?><dataview><?php } ?>
+<a onclick="initField('graph')"><div class="pretitle">
+  Grafik<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+</div></a>
+<div id="graph" class="accord" style="display:block">
 <canvas id="chart" width="780" height="390"></canvas>
 <script>
 var chartData = {
@@ -25,8 +27,10 @@ var chartData = {
 var myLine = new Chart(document.getElementById("chart").getContext("2d")).Line(chartData);
 </script>
 </div>
-<div style="width:150px; float:left;">
-<h2>Ringkasan Data</h2>
+<a onclick="initField('dataview')"><div class="pretitle">
+  Ringkasan Data<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+</div></a>
+<div id="dataview" class="accord">
 <table border="0">
   <tr><th>Tahun Masuk</th><th>Jumlah Mhs</th></tr>
   <?php foreach($res as $res_item): ?>
@@ -37,5 +41,4 @@ var myLine = new Chart(document.getElementById("chart").getContext("2d")).Line(c
   <?php endforeach ?>
 </table>
 </div>
-</div>
-<?php if(!isset($params['filter'])) { ?></dataview> <?php } ?>
+<?php if(!isset($params['filter'])) { ?></dataview><?php } ?>

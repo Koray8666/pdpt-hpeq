@@ -64,9 +64,6 @@ class Dataview extends CI_Controller {
 		$data['params'] = $this->input->get(NULL, TRUE);
 		$this->load->model('Srn_Klinis');
 		switch($view) {
-			case "typeshos":
-				$data['res'] = $this->Srn_Klinis->types_hos();
-				$this->load->view('dataview/sarana/typeshos', $data); break;
 			default: $this->load->view('not_avail'); break;
 		}
 	}

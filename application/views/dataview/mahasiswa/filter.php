@@ -57,8 +57,10 @@ function clearField(elem) {
 	$("input[name=filter_" + elem + "]").focus();
 }
 </script>
-<div class="filter">
-  <span class="filter-title">Filter Data</span>
+<a onclick="initField('filter')"><div class="pretitle">
+  Filter<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+</div></a>
+<div id="filter" class="accord">
   <form action="javascript:void(0);" name="filter" method="get">
     <table border="0" style="margin-bottom:10px; margin-top:-10px;">
       <tr>

@@ -13,7 +13,7 @@
 function loadView(url) {
 	$("#content").slideUp("fast", function() {
 		$(".loading").fadeIn("slow");
-		$(this).load("<?=base_url() ?>index.php/" + url, function() {
+		$(this).load("index.php/" + url, function() {
 			$(".loading").hide();
 			$(this).slideDown("slow");
 		});
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 <div id="wrap">
   <header>
-    <a onclick="loadView('dash/clear')"><strong>PDPTKes</strong>dashboard</a>
+    <a onclick="loadView('dash/clear')"><span><strong>PDPTKes</strong>dashboard</span></a>
   </header>
   
   <div id="sidebar">
@@ -56,12 +56,17 @@ $(document).ready(function() {
       <li>Program Studi<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" /></li>
       <li>Perguruan Tinggi<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" /></li>
     </ul>
+    <div id="sb-expand"><img src="<?=base_url() ?>resource/images/sb_expand.png" width="20"></div>
   </div>
   
   <div class="loading">
     <img src="<?=base_url() ?>resource/images/loading.gif"><br />
     Harap tunggu
   </div>
+    
   <div id="content">
-  
-  
+    <script>
+	function initField(element) {
+    	$("#" + element).slideToggle("fast");
+    }
+    </script>

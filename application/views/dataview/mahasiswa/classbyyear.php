@@ -1,5 +1,10 @@
-<?php if(!isset($params['filter'])) { ?><dataview> <?php } ?>
-<div style="width:790px; float:left">
+<?php if(!isset($params['filter'])) { ?>
+<dataview>
+<?php } ?>
+<a onclick="initField('graph')"><div class="pretitle">
+  Grafik<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+</div></a>
+<div id="graph" class="accord" style="display:block">
 <canvas id="chart" width="790" height="390"></canvas>
 <script>
 var chartData = {
@@ -32,12 +37,14 @@ var chartData = {
 
 var myLine = new Chart(document.getElementById("chart").getContext("2d")).Bar(chartData);
 </script>
+<h2>Legenda:<span style="font-size:14px; margin-left:10px;">
+<img src="<?=base_url() ?>resource/images/lgdblue.png" class="legend" />Reguler&ensp;
+<img src="<?=base_url() ?>resource/images/lgdgray.png" class="legend" />Non-Reguler</span></h2>
 </div>
-<div style="width:150px; float:left">
-<h2>Legenda</h2>
-<img src="<?=base_url() ?>resource/images/lgdblue.png" class="legend" />Reguler<br />
-<img src="<?=base_url() ?>resource/images/lgdgray.png" class="legend" />Non-Reguler
-<h2>Ringkasan Data</h2>
+<a onclick="initField('dataview')"><div class="pretitle">
+  Ringkasan Data<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+</div></a>
+<div id="dataview" class="accord">
 <table border="0">
   <tr><th>Tahun</th><th>Reguler</th><th>Non-Reguler</th></tr>
   <?php foreach($res as $res_item): ?>
@@ -49,4 +56,4 @@ var myLine = new Chart(document.getElementById("chart").getContext("2d")).Bar(ch
   <?php endforeach ?>
 </table>
 </div>
-<?php if(!isset($params['filter'])) { ?></dataview> <?php } ?>
+<?php if(!isset($params['filter'])) { ?></dataview></div> <?php } ?>
