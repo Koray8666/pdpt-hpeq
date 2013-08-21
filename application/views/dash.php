@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>PDPT Dashboard</title>
+<title>PDPTKes Dashboard</title>
 <link href="<?=base_url() ?>resource/images/favicon.png" rel="shortcut icon" />
 <link href="<?=base_url() ?>resource/css/style.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url() ?>resource/css/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -28,14 +28,17 @@ $(document).ready(function() {
 </head>
 
 <body>
+  <div class="loading">
+    <img src="<?=base_url() ?>resource/images/loading.gif"><br />
+    Harap tunggu
+  </div>
 
-<div id="wrap">
-  <header>
-    <a onclick="loadView('dash/clear')"><span><strong>PDPTKes</strong>dashboard</span></a>
-    <ul>
-      <li>Detailed</li>
-      <li>Geostats</li>
-    </ul>
-  </header>
-  
+  <div id="wrap">
+    <header>
+      <a onclick="loadView('dash/clear')"><span><strong>PDPTKes</strong>dashboard</span></a>
+      <ul>
+        <li>Detail</li>
+        <a href="<?=base_url() ?>index.php/geostats"><li>Sebaran</li></a>
+      </ul>
+    </header>
   

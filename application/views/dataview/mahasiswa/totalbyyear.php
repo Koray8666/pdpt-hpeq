@@ -1,9 +1,9 @@
 <?php if(!isset($params['filter'])) { ?><dataview><?php } ?>
 <a onclick="initField('graph')"><div class="pretitle">
-  Grafik<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+  Grafik<img src="<?=base_url() ?>resource/images/expand.png" for="graph" collapsed="true" width="16" align="right" />
 </div></a>
 <div id="graph" class="accord">
-<canvas id="chart" width="780" height="390"></canvas>
+<canvas id="chart" width="780" height="300"></canvas>
 <script>
 var chartData = {
 	labels : [
@@ -28,7 +28,7 @@ var myLine = new Chart(document.getElementById("chart").getContext("2d")).Line(c
 </script>
 </div>
 <a onclick="initField('dataview')"><div class="pretitle">
-  Ringkasan Data<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+  Ringkasan<img src="<?=base_url() ?>resource/images/collapse.png" for="dataview" collapsed="false" width="16" align="right" />
 </div></a>
 <div id="dataview" class="accord" style="display:block">
 <?php
@@ -72,6 +72,6 @@ var myLine = new Chart(document.getElementById("chart").getContext("2d")).Line(c
     <span style="font-size:48px"><?=$average[0] ?></span>
   </div>
   <div class="clear" style="margin-bottom:20px;"></div>
-  <a href="#">Lihat Detail Data</a>
+  <p><a href="#">Lihat Detail Data</a></p>
 </div>
 <?php if(!isset($params['filter'])) { ?></dataview><?php } ?>

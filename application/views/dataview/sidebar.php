@@ -1,4 +1,5 @@
-<div id="sidebar">
+
+  <div id="sidebar">
     <ul>
       <li><a class="main">Mahasiswa<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" /></a>
         <ul>
@@ -22,14 +23,19 @@
     </ul>
   </div>
   
-  <div class="loading">
-    <img src="<?=base_url() ?>resource/images/loading.gif"><br />
-    Harap tunggu
-  </div>
+  
     
   <div id="content">
     <script>
 	function initField(element) {
     	$("#" + element).slideToggle("fast");
+		var iconimage = $("img[for=" + element + "]");
+		if(iconimage.attr("collapsed") == "true") {
+			iconimage.attr("src", "<?=base_url() ?>resource/images/collapse.png");
+			iconimage.attr("collapsed", "false");
+		} else {
+			iconimage.attr("src", "<?=base_url() ?>resource/images/expand.png");
+			iconimage.attr("collapsed", "true");
+		}
     }
     </script>

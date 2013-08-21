@@ -58,7 +58,7 @@ function clearField(elem) {
 }
 </script>
 <a onclick="initField('filter')"><div class="pretitle">
-  Filter<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+  Filter<img src="<?=base_url() ?>resource/images/expand.png" for="filter" collapsed="true" width="16" align="right" />
 </div></a>
 <div id="filter" class="accord">
   <form action="javascript:void(0);" name="filter" method="get">
@@ -77,7 +77,7 @@ function clearField(elem) {
       </tr>
     </table>
     <input type="reset" value="Hapus Filter" style="float:left;" /> <input type="submit" onclick="doFilter('<?=$filter_url?>')" value="Cari" style="float:left;" />
-    <div style="color:#aaa; padding: 12px 0 0 10px; float:left;"><strong>Hint</strong>: Untuk reset data pada grafik, silahkan tekan 'Hapus Filter', kemudian tekan 'Cari'</div>
+    <div style="color:#aaa; padding: 12px 0 0 10px; float:left;"><strong>Hint</strong>: Untuk reset data, silahkan tekan 'Hapus Filter', kemudian tekan 'Cari'</div>
     <div class="clear"></div>
   </form>
 </div>
