@@ -55,23 +55,23 @@ var myLine = new Chart(document.getElementById("chart").getContext("2d")).Line(c
 ?>
   <div class="summary">
     <p>Mahasiswa Masuk PT Tahun <?=$res_item['TAHUN_MASUK'] ?></p>
-    <span style="font-size:48px"><?=$res_item['JML_MAHASISWA'] ?></span>
+    <span class="summarytext"><?=$res_item['JML_MAHASISWA'] ?></span>
   </div>
   <div class="summary">
     <p>Jumlah Penerimaan <strong>Tertinggi</strong> pada Tahun</p>
-    <span style="font-size:48px"><?=$hpeak_y ?></span><br />
+    <span class="summarytext"><?=$hpeak_y ?></span><br />
     <p><?=$hpeak ?> Mahasiswa</p>
   </div>
   <div class="summary">
     <p>Jumlah Penerimaan <strong>Terendah</strong> pada Tahun</p>
-    <span style="font-size:48px"><?=$lpeak_y ?></span><br />
+    <span class="summarytext"><?=$lpeak_y ?></span><br />
     <p><?=$lpeak ?> Mahasiswa</p>
   </div>
   <div class="summary">
     <p>Rata-rata Penerimaan Mahasiswa per Tahun</p>
-    <span style="font-size:48px"><?=$average[0] ?></span>
+    <span class="summarytext"><?=$average[0] ?></span>
   </div>
-  <div class="clear" style="margin-bottom:20px;"></div>
+  <div class="clear"></div>
   <p><a href="#">Lihat Detail Data</a></p>
 </div>
 <?php if(!isset($params['filter'])) { ?></dataview><?php } ?>
