@@ -18,3 +18,5 @@ class Dash extends CI_Controller {
 	}
 	
 }
+
+?>
