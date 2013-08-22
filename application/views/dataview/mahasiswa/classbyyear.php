@@ -2,10 +2,10 @@
 <dataview>
 <?php } ?>
 <a onclick="initField('graph')"><div class="pretitle">
-  Grafik<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+  Grafik<img src="<?=base_url() ?>resource/images/expand.png" for="graph" collapsed="true" width="16" align="right" />
 </div></a>
-<div id="graph" class="accord" style="display:block">
-<canvas id="chart" width="790" height="390"></canvas>
+<div id="graph" class="accord">
+<canvas id="chart" width="790" height="300"></canvas>
 <script>
 var chartData = {
 	labels : [
@@ -41,19 +41,20 @@ var myLine = new Chart(document.getElementById("chart").getContext("2d")).Bar(ch
 <img src="<?=base_url() ?>resource/images/lgdblue.png" class="legend" />Reguler&ensp;
 <img src="<?=base_url() ?>resource/images/lgdgray.png" class="legend" />Non-Reguler</span></h2>
 </div>
+<?php
+$rratio = ($res_item['R'] / ($res_item['R'] + $res_item['N'])) * 100;
+$rratio = explode(".", $rratio);
+$nratio = 100 - $rratio[0];
+?>
 <a onclick="initField('dataview')"><div class="pretitle">
-  Ringkasan Data<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" />
+  Ringkasan Data<img src="<?=base_url() ?>resource/images/collapse.png" for="dataview" collapsed="false" width="16" align="right" />
 </div></a>
-<div id="dataview" class="accord">
-<table border="0">
-  <tr><th>Tahun</th><th>Reguler</th><th>Non-Reguler</th></tr>
-  <?php foreach($res as $res_item): ?>
-  <tr>
-    <td><?=$res_item['TAHUN'] ?></td>
-    <td><?=$res_item['R'] ?></td>
-    <td><?=$res_item['N'] ?></td>
-  </tr>
-  <?php endforeach ?>
-</table>
+<div id="dataview" class="accord" style="display:block">
+  <div class="summary">
+    <p>Rasio Pemilihan Kelas Tahun <?=$res_item['TAHUN'] ?></p>
+    <span class="summarytext">R<?=$rratio[0] ?>:N<?=$nratio ?></span>
+  </div>
+  <div class="clear"></div>
+  <p><a href="#">Lihat Detail Data</a></p>
 </div>
 <?php if(!isset($params['filter'])) { ?></dataview></div> <?php } ?>

@@ -12,10 +12,10 @@
       <li>Tenaga Pengajar<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right"></li>
       <li><a class="main">Sarana Klinis<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" /></a>
         <ul>
-          <li><a onClick="loadView('dataview/sarana/typeshos')">Jenis Sarana Klinis</a></li>
-          <li><a onClick="loadView('dataview/sarana/typescomm')">Jenis Sarana Klinis Komunitas</a></li>
-          <li><a onClick="loadView('dataview/sarana/cooperationhos')">Kerjasama Sarana Klinis</a></li>
-          <li><a onClick="loadView('dataview/sarana/cooperationcomm')">Kerjasama Sarana Klinis Komunitas</a></li>
+          <li><a onClick="loadView('dataview/sarana/hos_totalbytype')">Jenis Sarana Klinis</a></li>
+          <li><a onClick="loadView('dataview/sarana/com_totalbytype')">Jenis Sarana Klinis Komunitas</a></li>
+          <li><a onClick="loadView('dataview/sarana/hos_coop')">Kerjasama Sarana Klinis</a></li>
+          <li><a onClick="loadView('dataview/sarana/com_coop')">Kerjasama Sarana Klinis Komunitas</a></li>
         </ul>
       </li>
       <li>Program Studi<img src="<?=base_url() ?>resource/images/expand.png" width="16" align="right" /></li>

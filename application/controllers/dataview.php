@@ -40,6 +40,22 @@ class Dataview extends CI_Controller {
 		}
 	}
 	
+	public function sarana($view) {
+		$data['params'] = $this->input->get(NULL, TRUE);
+		$this->load->model('Sarana');
+		
+		switch($view) {
+			case "hos_totalbytype":
+				$data['res'] = $this->Sarana->total_by_type();
+				if($data['params'] == NULL) {
+					echo "<h1>Jumlah Sarana Klinis</h1>";
+				}
+				$this->load->view('dataview/sarana/hos_totalbytype', $data);
+				break;
+			default: $this->load->view('not_avail'); break;	
+		}
+	}
+	
 	public function pt($view) {
 		$this->load->model('Perg_Tinggi');
 		switch($view) {
@@ -47,6 +63,7 @@ class Dataview extends CI_Controller {
 				$data['res'] = $this->Perg_Tinggi->data_list($this->input->get('term'));
 				echo json_encode($data['res']);
 				break;
+			default: $this->load->view('not_avail'); break;
 		}
 	}
 	
@@ -57,11 +74,7 @@ class Dataview extends CI_Controller {
 				$params = array("term" => $this->input->get('term'), "pt" => $this->input->get('pt'));
 				$data['res'] = $this->Prog_Studi->data_list($params);
 				echo json_encode($data['res']);
-		}
-	}
-	
-	public function sarana($view) {
-		switch($view) {
+				break;
 			default: $this->load->view('not_avail'); break;
 		}
 	}
